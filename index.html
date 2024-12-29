@@ -3,127 +3,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <!-- Materialize CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Pritesh Shah - Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #ffffff;
-      --text-color: #34495e;
-      --primary-color: #3498db;
-      --secondary-color: #2c3e50;
+      --primary: #2563eb;
+      --background: #ffffff;
+      --text: #1f2937;
+      --secondary-text: #4b5563;
+      --card-bg: #f8fafc;
+      --border: #e5e7eb;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
 
     [data-theme="dark"] {
-      --bg-color: #2c3e50;
-      --text-color: #ecf0f1;
-      --primary-color: #1abc9c;
-      --secondary-color: #34495e;
+      --primary: #3b82f6;
+      --background: #0f172a;
+      --text: #f1f5f9;
+      --secondary-text: #cbd5e1;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
       transition: background-color 0.3s, color 0.3s;
     }
 
-    .navbar, footer {
-      background-color: var(--secondary-color);
-      color: var(--text-color);
+    nav {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    .navbar a, footer a {
-      color: var(--text-color) !important;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .theme-switch {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .theme-switch:hover {
+      background-color: var(--border);
+    }
+
+    .theme-switch i {
+      color: var(--text);
     }
 
     .hero {
-      background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
-      color: var(--text-color);
-      padding: 60px 20px;
+      padding: 8rem 0 4rem;
       text-align: center;
     }
 
-    .toggle-theme {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      border: none;
+    .profile-img {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      margin-bottom: 2rem;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 20px var(--shadow);
     }
 
-    .toggle-theme:hover {
-      background-color: var(--secondary-color);
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      color: var(--secondary-text);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: transform 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: var(--secondary-text);
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .download-cv {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 2rem;
+      transition: opacity 0.3s;
+    }
+
+    .download-cv:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
-<body data-theme="light">
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">Portfolio</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<body>
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">Portfolio</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <div class="theme-switch">
+          <i class="fas fa-moon"></i>
+          <span>Theme</span>
+        </div>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hi, I'm Pritesh Shah. A data science enthusiast specializing in ML, AI, and data analysis.</p>
-  </div>
+  <section class="hero">
+    <div class="container">
+      <img src="assets/images/photo.png" alt="Pritesh Shah" class="profile-img">
+      <h1>Pritesh Shah</h1>
+      <p>Data Science Graduate Student at Indiana University with expertise in Machine Learning, NLP, and Data Analysis</p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/pritesh96" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/priteshshah96" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:priteshshahwork@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- About Section -->
-  <div id="about" class="section">
+  <section id="about" class="section">
     <div class="container">
       <h2>About Me</h2>
-      <p>
-        I am Pritesh Shah, a graduate student specializing in Applied Data Science. 
-        My focus is on building impactful data-driven solutions, exploring new ML techniques, and presenting compelling visualizations.
-      </p>
+      <p>Currently pursuing an MS in Applied Data Science at Indiana University, Indianapolis. As a Research Assistant, I work on cultural significance annotation in language models and utilize specialized tools for scientific text parsing. With experience at companies like Malom Clothing and Niku Associates, I've implemented ML algorithms for inventory forecasting and optimized supply chain efficiency.</p>
+      <a href="assets/cv/Pritesh_Shah_CV.pdf" class="download-cv" download>
+        Download CV
+      </a>
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="page-footer">
+  <section id="skills" class="section">
     <div class="container">
-      <p>&copy; 2024 Pritesh Shah. All rights reserved.</p>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>Python</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <h3>SQL</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-brain"></i>
+          <h3>ML</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Data Analysis</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-comment-dots"></i>
+          <h3>NLP</h3>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-cloud"></i>
+          <h3>AWS</h3>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Theme Toggle Button -->
-  <button class="toggle-theme" id="themeToggle" title="Toggle Theme">🌓</button>
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Haiku Generator</h3>
+          <p>AI-powered haiku generator using LLaMa 2 and GPT-J 6B, featuring sentiment analysis and word cloud visualization.</p>
+        </div>
+        <div class="project-card">
+          <h3>Workforce Scheduling</h3>
+          <p>Comprehensive dashboards for shift duty scheduling and raw material procurement optimization using Tableau and Random Forest algorithms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
+    const themeSwitch = document.querySelector('.theme-switch');
+    const icon = themeSwitch.querySelector('i');
 
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
+    // Check saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Theme toggle functionality
+    themeSwitch.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme); // Save preference
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Toggle icon
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
     });
-
-    // Load saved theme on page load
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
   </script>
 </body>
 </html>
