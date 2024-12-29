@@ -15,12 +15,12 @@
     .hero {
       background: linear-gradient(120deg, #3f51b5, #2196f3);
       color: white;
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
     }
     .hero p {
       font-size: 1.5rem;
@@ -29,13 +29,23 @@
       padding: 40px 20px;
     }
     .project-card {
-      margin: 20px 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     .navbar {
       background: #3f51b5;
     }
     .navbar a {
       color: white !important;
+    }
+    footer {
+      padding: 20px 0;
+      background: #3f51b5;
+      color: white;
+      text-align: center;
     }
   </style>
 </head>
@@ -45,11 +55,9 @@
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">Portfolio</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="about.html">About</a></li>
-        <li><a href="ml.html">ML</a></li>
-        <li><a href="ai.html">AI</a></li>
-        <li><a href="data_analysis.html">Data Analysis</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -57,19 +65,33 @@
   <!-- Hero Section -->
   <div class="hero">
     <h1>Welcome to My Portfolio</h1>
-    <p>Showcasing the best of my work in ML, AI, and Data Analysis</p>
+    <p>Highlighting my work in Machine Learning, AI, and Data Analysis</p>
   </div>
 
-  <!-- Featured Projects Section -->
-  <div class="section">
+  <!-- About Section -->
+  <div id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I am Pritesh Shah, a graduate student specializing in Applied Data Science.
+        My focus is on building impactful data-driven solutions, exploring new ML techniques, and presenting compelling visualizations.
+      </p>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div id="projects" class="section">
     <div class="container">
       <h2>Highlighted Projects</h2>
       <div class="row">
         <div class="col s12 m4">
           <div class="card project-card">
+            <div class="card-image">
+              <img src="assets/images/project1.jpg" alt="Project 1">
+            </div>
             <div class="card-content">
-              <span class="card-title">Project 1</span>
-              <p>A brief description of one of the best projects.</p>
+              <span class="card-title">ML Project</span>
+              <p>A brief description of one of the best machine learning projects.</p>
             </div>
             <div class="card-action">
               <a href="ml_project1.html">View Details</a>
@@ -78,9 +100,12 @@
         </div>
         <div class="col s12 m4">
           <div class="card project-card">
+            <div class="card-image">
+              <img src="assets/images/project2.jpg" alt="Project 2">
+            </div>
             <div class="card-content">
-              <span class="card-title">Project 2</span>
-              <p>Another standout project with relevant details.</p>
+              <span class="card-title">AI Project</span>
+              <p>An innovative AI project solving real-world challenges.</p>
             </div>
             <div class="card-action">
               <a href="ai_project1.html">View Details</a>
@@ -89,9 +114,12 @@
         </div>
         <div class="col s12 m4">
           <div class="card project-card">
+            <div class="card-image">
+              <img src="assets/images/project3.jpg" alt="Project 3">
+            </div>
             <div class="card-content">
-              <span class="card-title">Project 3</span>
-              <p>An innovative project in the Data Analysis domain.</p>
+              <span class="card-title">Data Analysis</span>
+              <p>Exploring trends through insightful data analysis.</p>
             </div>
             <div class="card-action">
               <a href="data_analysis_project1.html">View Details</a>
@@ -102,23 +130,17 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="page-footer blue lighten-1">
+  <!-- Contact Section -->
+  <div id="contact" class="section">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Contact Me</h5>
-          <p class="grey-text text-lighten-4">Feel free to reach out on LinkedIn or GitHub!</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="https://linkedin.com">LinkedIn</a></li>
-            <li><a class="grey-text text-lighten-3" href="https://github.com">GitHub</a></li>
-          </ul>
-        </div>
-      </div>
+      <h2>Contact</h2>
+      <p>Feel free to reach out via email or connect on LinkedIn and GitHub!</p>
     </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Pritesh Shah. All Rights Reserved.</p>
   </footer>
 
   <!-- Materialize JS -->
