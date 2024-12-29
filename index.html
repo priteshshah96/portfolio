@@ -34,13 +34,30 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background);
       color: var(--text);
       line-height: 1.6;
       transition: background-color 0.3s, color 0.3s;
-      padding-top: 10rem; /* Adjusted to ensure header is not hidden */
+      padding-top: 8rem;
+      overflow-x: hidden;
+    }
+
+    .banner {
+      background-color: #ffcc00;
+      color: #000;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1001;
     }
 
     nav {
@@ -49,15 +66,17 @@
       padding: 1rem 0;
       position: fixed;
       width: 100%;
-      top: 3rem; /* Adjusted to be below the banner */
+      top: 3rem;
       z-index: 1000;
       backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
     }
 
     .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1rem;
     }
 
     nav .container {
@@ -71,6 +90,11 @@
       font-size: 1.5rem;
       color: var(--text);
       text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      color: var(--primary);
     }
 
     .nav-links {
@@ -84,10 +108,26 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
     }
 
     .nav-links a:hover {
       color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .theme-switch {
@@ -106,150 +146,199 @@
       background-color: var(--border);
     }
 
-    .theme-switch i {
-      color: var(--text);
+    .hero {
+      padding: 3rem 0;
+      text-align: center;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero {
-      padding: 8rem 0 4rem;
-      text-align: center;
+    .hero .container {
+      max-width: 800px;
     }
 
     .profile-img {
-      width: 250px; /* Increased from 150px */
-      height: 250px; /* Increased from 150px */
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       margin-bottom: 2rem;
       border: 4px solid var(--primary);
       box-shadow: 0 0 20px var(--shadow);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
       color: var(--text);
+      font-weight: 700;
     }
 
     .hero p {
       color: var(--secondary-text);
       max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 4rem 0;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: var(--text);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .skill-card {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: transform 0.3s;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .skill-card i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background-color: var(--card-bg);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      transition: transform 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card h3 {
-      color: var(--text);
-      margin-bottom: 1rem;
-    }
-
-    .project-card p {
-      color: var(--secondary-text);
-      margin-bottom: 1rem;
+      margin: 0 auto 2rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.8;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 2rem;
     }
 
     .social-links a {
       color: var(--text);
       font-size: 1.5rem;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      border-radius: 50%;
     }
 
     .social-links a:hover {
       color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 2.5rem;
+      color: var(--text);
+      text-align: center;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+      margin: 1rem auto 0;
+    }
+
+    #about.section .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #about.section p {
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--secondary-text);
     }
 
     .download-cv {
       display: inline-block;
       background-color: var(--primary);
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
       border-radius: 0.5rem;
       text-decoration: none;
       font-weight: 500;
-      margin-top: 2rem;
-      transition: opacity 0.3s, transform 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px var(--shadow);
     }
 
     .download-cv:hover {
-      opacity: 0.9;
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 8px var(--shadow);
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-    }
-
-    .banner {
-      background-color: #ffcc00;
-      color: #000;
-      text-align: center;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
       padding: 1rem;
-      font-weight: bold;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1001;
+    }
+
+    .skill-card {
+      background-color: var(--card-bg);
+      padding: 2rem 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .skill-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover i {
+      transform: scale(1.1);
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      padding: 1rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .project-card h3 {
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      color: var(--secondary-text);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      flex-grow: 1;
     }
 
     .fade-in {
@@ -263,15 +352,88 @@
       }
     }
 
-    html {
-      scroll-behavior: smooth;
+    @media (max-width: 768px) {
+      body {
+        padding-top: 7rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        width: 95%;
+        padding: 0 1rem;
+      }
+
+      .section {
+        padding: 3rem 0;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .social-links {
+        gap: 1.5rem;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .container {
+        width: 90%;
+      }
+
+      .profile-img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .profile-img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .hero {
+        padding: 4rem 0;
+      }
+
+      .social-links {
+        gap: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
   <div class="banner">
-    This site is a work in progress to be completed by January 13th, 2025.
+    This site is a work in progress to be completed in <span id="countdown"></span>.
   </div>
+  
   <nav>
     <div class="container">
       <a href="#" class="nav-logo">Portfolio</a>
@@ -301,6 +463,12 @@
         </a>
         <a href="mailto:priteshshahwork@gmail.com" title="Email">
           <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.kaggle.com/priteshshah96" target="_blank" title="Kaggle">
+          <i class="fab fa-kaggle"></i>
+        </a>
+        <a href="https://huggingface.co/priteshshah96" target="_blank" title="Hugging Face">
+          <i class="fab fa-hugging-face"></i>
         </a>
       </div>
     </div>
@@ -365,6 +533,7 @@
   </section>
 
   <script>
+    // Theme switcher functionality
     const themeSwitch = document.querySelector('.theme-switch');
     const icon = themeSwitch.querySelector('i');
 
@@ -385,6 +554,53 @@
       // Toggle icon
       icon.classList.toggle('fa-sun');
       icon.classList.toggle('fa-moon');
+    });
+
+    // Countdown timer
+    const countdownElement = document.getElementById('countdown');
+    const targetDate = new Date('2025-01-13T00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "Completed";
+      }
+    }
+
+    // Initialize and update countdown
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Fade-in animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(element => {
+      element.style.opacity = '0';
+      observer.observe(element);
     });
   </script>
 </body>
