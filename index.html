@@ -9,47 +9,66 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #34495e;
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #2c3e50;
+      --text-color: #ecf0f1;
+      --primary-color: #1abc9c;
+      --secondary-color: #34495e;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
     }
+
+    .navbar, footer {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    .navbar a, footer a {
+      color: var(--text-color) !important;
+    }
+
     .hero {
-      background: linear-gradient(120deg, #3f51b5, #2196f3);
-      color: white;
+      background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+      color: var(--text-color);
       padding: 60px 20px;
       text-align: center;
     }
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
-    .hero p {
-      font-size: 1.5rem;
-    }
-    .section {
-      padding: 40px 20px;
-    }
-    .project-card {
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    .navbar {
-      background: #3f51b5;
-    }
-    .navbar a {
-      color: white !important;
-    }
-    footer {
-      padding: 20px 0;
-      background: #3f51b5;
-      color: white;
-      text-align: center;
+
+    .toggle-theme:hover {
+      background-color: var(--secondary-color);
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-wrapper container">
@@ -65,7 +84,7 @@
   <!-- Hero Section -->
   <div class="hero">
     <h1>Welcome to My Portfolio</h1>
-    <p>Highlighting my work in Machine Learning, AI, and Data Analysis</p>
+    <p>Hi, I'm Pritesh Shah. A data science enthusiast specializing in ML, AI, and data analysis.</p>
   </div>
 
   <!-- About Section -->
@@ -73,77 +92,38 @@
     <div class="container">
       <h2>About Me</h2>
       <p>
-        I am Pritesh Shah, a graduate student specializing in Applied Data Science.
+        I am Pritesh Shah, a graduate student specializing in Applied Data Science. 
         My focus is on building impactful data-driven solutions, exploring new ML techniques, and presenting compelling visualizations.
       </p>
     </div>
   </div>
 
-  <!-- Projects Section -->
-  <div id="projects" class="section">
-    <div class="container">
-      <h2>Highlighted Projects</h2>
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card project-card">
-            <div class="card-image">
-              <img src="assets/images/project1.jpg" alt="Project 1">
-            </div>
-            <div class="card-content">
-              <span class="card-title">ML Project</span>
-              <p>A brief description of one of the best machine learning projects.</p>
-            </div>
-            <div class="card-action">
-              <a href="ml_project1.html">View Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card project-card">
-            <div class="card-image">
-              <img src="assets/images/project2.jpg" alt="Project 2">
-            </div>
-            <div class="card-content">
-              <span class="card-title">AI Project</span>
-              <p>An innovative AI project solving real-world challenges.</p>
-            </div>
-            <div class="card-action">
-              <a href="ai_project1.html">View Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card project-card">
-            <div class="card-image">
-              <img src="assets/images/project3.jpg" alt="Project 3">
-            </div>
-            <div class="card-content">
-              <span class="card-title">Data Analysis</span>
-              <p>Exploring trends through insightful data analysis.</p>
-            </div>
-            <div class="card-action">
-              <a href="data_analysis_project1.html">View Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Section -->
-  <div id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Feel free to reach out via email or connect on LinkedIn and GitHub!</p>
-    </div>
-  </div>
-
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Pritesh Shah. All Rights Reserved.</p>
+  <footer class="page-footer">
+    <div class="container">
+      <p>&copy; 2024 Pritesh Shah. All rights reserved.</p>
+    </div>
   </footer>
+
+  <!-- Theme Toggle Button -->
+  <button class="toggle-theme" id="themeToggle" title="Toggle Theme">🌓</button>
 
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme); // Save preference
+    });
+
+    // Load saved theme on page load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+  </script>
 </body>
 </html>
