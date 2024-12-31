@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: theme('colors.white');
+    --text: theme('colors.gray.900');
+    --neural-color: theme('colors.blue.500');
+  }
+
+  .dark {
+    --background: theme('colors.slate.950');
+    --text: theme('colors.white');
+    --neural-color: theme('colors.blue.400');
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--text)] transition-colors duration-200;
+  }
+
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-lg 
+           border border-white/20 dark:border-white/10;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4;
+  }
+  
+  .container-width {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .neural-line {
+    stroke: var(--neural-color);
+    opacity: 0.3;
+    transition: stroke 0.3s ease;
+  }
+
+  .neural-node {
+    fill: var(--neural-color);
+    transition: fill 0.3s ease;
+  }
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
