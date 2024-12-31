@@ -10,7 +10,7 @@ export const Banner = ({ countdown }) => {
     >
       <div className="container mx-auto px-4 py-2">
         <div className="flex justify-center items-center gap-4 text-sm md:text-base">
-          <span className="font-medium">Website Completion:</span>
+          <span className="font-medium">The Website is currently in beta testing, Expected completion:</span>
           <div className="flex gap-3">
             {countdown !== 'Complete!' ? (
               <motion.div
