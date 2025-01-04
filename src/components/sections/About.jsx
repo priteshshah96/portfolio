@@ -35,10 +35,10 @@ export const About = () => {
           <div className="max-w-3xl mx-auto">
             <GlassCard className="mb-12">
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                Currently pursuing an MS in Applied Data Science at Indiana University, 
-                Indianapolis. Passionate about leveraging data-driven approaches to solve 
-                complex problems. My research interests include machine learning, natural 
-                language processing, and deep learning applications.
+              I am currently pursuing an MS in Applied Data Science at Indiana University,
+              Indianapolis. My research focuses on Generative AI and Knowledge Graphs. 
+              I have over 3 years of experience building machine learning models and analyzing data. 
+              I enjoy working on practical solutions using machine learning, natural language processing, and deep learning. 
               </p>
             </GlassCard>
 
