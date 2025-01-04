@@ -64,35 +64,35 @@ const App = () => {
             animate="animate"
             exit="exit"
             variants={pageTransition}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="flex-1 pt-8"
           >
             <div className="container mx-auto px-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <Hero isDarkTheme={theme === 'dark'} />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <About />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <Skills />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <Projects />
               </motion.div>
