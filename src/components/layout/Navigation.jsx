@@ -11,7 +11,7 @@ export const Navigation = ({ onThemeToggle, isDarkTheme }) => {
   ];
 
   return (
-    <nav className="fixed w-full top-10 z-40">
+    <nav className="fixed w-full top-1 z-50 h-16">
       <div className="container mx-auto px-4">
         <div className="glass-card backdrop-blur-lg">
           <div className="flex justify-between items-center p-4">

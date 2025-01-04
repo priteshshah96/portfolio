@@ -21,10 +21,29 @@
 
   body {
     @apply bg-[var(--background)] text-[var(--text)] transition-colors duration-200;
+    overflow-y: scroll;
   }
 
   * {
     @apply transition-colors duration-200;
+  }
+
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
   }
 }
 
