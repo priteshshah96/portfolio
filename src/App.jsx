@@ -87,7 +87,7 @@ const App = () => {
         <ScrollToTopButton />
 
         {/* Main Content */}
-        <div className="relative flex flex-col min-h-screen pt-16 pb-24">
+        <div className="relative flex flex-col min-h-screen pt-16 pb-0">
           <AnimatePresence mode="wait">
             <motion.main
               key="main"

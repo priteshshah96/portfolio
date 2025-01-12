@@ -19,7 +19,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="mt-20 bg-gray-50 dark:bg-gray-800/50 relative">
+    <footer className="mt-6 bg-gray-50 dark:bg-gray-800/50 relative">
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           {/* Social Links */}
