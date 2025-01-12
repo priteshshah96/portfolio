@@ -74,14 +74,6 @@ export const Hero = ({ isDarkTheme }) => {
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 px-4">
               <motion.a
-                href="mailto:priteshshahwork@gmail.com"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Reach Out
-              </motion.a>
-              <motion.a
                 href="/assets/cv/Pritesh_Shah_CV.pdf"
                 className={`bg-transparent px-8 py-3 rounded-lg font-medium border-2 ${
                   isDarkTheme

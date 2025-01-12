@@ -1,54 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SkillCard } from '../ui/SkillCard';
+import {
+  FaPython,
+  FaJs,
+  FaDatabase,
+  FaAws,
+  FaCloud,
+  FaTable,
+} from 'react-icons/fa'; // Use FontAwesome icons
+import { AiOutlineCode } from 'react-icons/ai'; // Use for generic coding
+import { BiData } from 'react-icons/bi'; // Use for data-related skills
 
 export const Skills = () => {
   const skills = [
-    { 
-      icon: 'fa-python', 
-      title: 'Python',
-      level: 90,
-      categories: ['Programming', 'Data Science']
-    },
-    { 
-      icon: 'fa-database', 
-      title: 'SQL',
-      level: 85,
-      categories: ['Database', 'Data Analysis']
-    },
-    { 
-      icon: 'fa-brain', 
-      title: 'Machine Learning',
-      level: 85,
-      categories: ['AI/ML', 'Data Science']
-    },
-    { 
-      icon: 'fa-chart-line', 
-      title: 'Data Analysis',
-      level: 88,
-      categories: ['Data Science', 'Statistics']
-    },
-    { 
-      icon: 'fa-comment-dots', 
-      title: 'NLP',
-      level: 82,
-      categories: ['AI/ML', 'Data Science']
-    },
-    { 
-      icon: 'fa-cloud', 
-      title: 'AWS',
-      level: 80,
-      categories: ['Cloud', 'DevOps']
-    }
+    // Programming Languages
+    { IconComponent: FaPython, title: 'Python', level: 90, categories: ['Programming'] },
+    { IconComponent: FaJs, title: 'JavaScript', level: 85, categories: ['Programming'] },
+    { IconComponent: AiOutlineCode, title: 'R', level: 80, categories: ['Programming'] },
+
+    // Databases
+    { IconComponent: FaDatabase, title: 'MySQL', level: 85, categories: ['Databases'] },
+    { IconComponent: FaDatabase, title: 'MongoDB', level: 80, categories: ['Databases'] },
+    { IconComponent: FaDatabase, title: 'SQLite', level: 75, categories: ['Databases'] },
+
+    // Data Science & Analysis
+    { IconComponent: BiData, title: 'Scikit-learn', level: 85, categories: ['Data Science'] },
+    { IconComponent: BiData, title: 'Pandas', level: 88, categories: ['Data Science'] },
+    { IconComponent: BiData, title: 'NumPy', level: 88, categories: ['Data Science'] },
+    { IconComponent: FaTable, title: 'Tableau', level: 80, categories: ['Data Science'] },
+    { IconComponent: FaCloud, title: 'Streamlit', level: 75, categories: ['Data Science'] },
+
+    // Machine Learning & AI
+    { IconComponent: AiOutlineCode, title: 'Machine Learning', level: 85, categories: ['AI/ML'] },
+    { IconComponent: AiOutlineCode, title: 'NLP (Natural Language Processing)', level: 82, categories: ['AI/ML'] },
+
+    // Cloud & Deployment
+    { IconComponent: FaAws, title: 'AWS (SageMaker, ECS, Lambda, S3)', level: 75, categories: ['Cloud & Deployment'] },
+    { IconComponent: FaCloud, title: 'MLflow & Hydra', level: 70, categories: ['Cloud & Deployment'] },
   ];
 
-  const categories = [...new Set(skills.flatMap(skill => skill.categories))];
+  const categories = ['All', ...new Set(skills.flatMap(skill => skill.categories))];
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const [selectedCategory, setSelectedCategory] = React.useState('All');
-
-  const filteredSkills = selectedCategory === 'All' 
-    ? skills
-    : skills.filter(skill => skill.categories.includes(selectedCategory));
+  const filteredSkills =
+    selectedCategory === 'All'
+      ? skills
+      : skills.filter(skill => skill.categories.includes(selectedCategory));
 
   return (
     <section id="skills" className="py-20">
@@ -61,28 +59,16 @@ export const Skills = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold mb-8">Skills & Expertise</h2>
-          
+
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <motion.button
-              onClick={() => setSelectedCategory('All')}
-              className={`px-4 py-2 rounded-full ${
-                selectedCategory === 'All' 
-                  ? 'bg-primary text-white' 
-                  : 'bg-gray-100 dark:bg-gray-800'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              All
-            </motion.button>
-            {categories.map((category) => (
+            {categories.map(category => (
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full ${
-                  selectedCategory === category 
-                    ? 'bg-primary text-white' 
+                  selectedCategory === category
+                    ? 'bg-primary text-white'
                     : 'bg-gray-100 dark:bg-gray-800'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -94,7 +80,8 @@ export const Skills = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skill Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
           {filteredSkills.map((skill, index) => (
             <motion.div
               key={skill.title}
@@ -103,9 +90,9 @@ export const Skills = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <SkillCard 
-                icon={skill.icon} 
-                title={skill.title} 
+              <SkillCard
+                IconComponent={skill.IconComponent}
+                title={skill.title}
                 level={skill.level}
               />
             </motion.div>

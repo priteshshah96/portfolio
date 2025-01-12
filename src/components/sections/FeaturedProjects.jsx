@@ -1,31 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { ProjectCard } from '../ui/ProjectCard';
+import { allProjects } from '../data/projects';
 
-export const Projects = () => {
-  const projects = [
-    {
-      title: 'Haiku Generator',
-      description: 'AI-powered haiku generator using LLaMa 2 and GPT-J 6B, featuring sentiment analysis and word cloud visualization.',
-      tags: ['Python', 'NLP', 'Deep Learning', 'LLaMa 2'],
-      imageUrl: '/assets/projects/haiku-generator.png',
-      projectUrl: 'https://github.com/priteshshah96/haiku-generator'
-    },
-    {
-      title: 'Workforce Scheduling',
-      description: 'Comprehensive dashboards for shift duty scheduling and raw material procurement optimization using Tableau and Random Forest algorithms.',
-      tags: ['Python', 'Machine Learning', 'Tableau', 'Optimization'],
-      imageUrl: '/assets/projects/workforce-scheduling.png',
-      projectUrl: 'https://github.com/priteshshah96/workforce-scheduling'
-    },
-    {
-      title: 'Smart Energy Prediction',
-      description: 'Time series forecasting model for energy consumption prediction using LSTM networks and weather data integration.',
-      tags: ['Python', 'Deep Learning', 'Time Series', 'LSTM'],
-      imageUrl: '/assets/projects/energy-prediction.png',
-      projectUrl: 'https://github.com/priteshshah96/energy-prediction'
-    }
-  ];
+export const FeaturedProjects = () => {
+  const navigate = useNavigate();
+
+  const featuredProjects = allProjects.slice(0, 3); // Get top 3 featured projects
+
+  const handleSeeMore = () => {
+    navigate('/all-projects'); // Navigate to the All Projects page
+  };
 
   return (
     <section id="projects" className="py-20">
@@ -43,8 +29,9 @@ export const Projects = () => {
           </p>
         </motion.div>
 
+        {/* Featured Project Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -57,6 +44,7 @@ export const Projects = () => {
           ))}
         </div>
 
+        {/* See More Button */}
         <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
@@ -64,14 +52,12 @@ export const Projects = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <a 
-            href="https://github.com/priteshshah96"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={handleSeeMore}
             className="inline-flex items-center text-primary-dark hover:text-primary"
           >
-            View More Projects <i className="fas fa-arrow-right ml-2"></i>
-          </a>
+            See More Projects <i className="fas fa-arrow-right ml-2"></i>
+          </button>
         </motion.div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GlassCard } from './GlassCard';
 
-export const SkillCard = ({ icon, title, level = 0 }) => {
+export const SkillCard = ({ IconComponent, title, level = 0 }) => {
   return (
     <GlassCard className="text-center">
       <motion.div
@@ -11,9 +11,15 @@ export const SkillCard = ({ icon, title, level = 0 }) => {
         transition={{ duration: 0.3 }}
       >
         {/* Icon */}
-        <div className="mb-4">
-          <i className={`fas ${icon} text-3xl text-primary-dark`}></i>
-        </div>
+        {IconComponent ? (
+          <div className="mb-4">
+            <IconComponent size={48} className="text-primary-dark" />
+          </div>
+        ) : (
+          <div className="mb-4">
+            <span className="text-gray-500">No Icon</span>
+          </div>
+        )}
 
         {/* Title */}
         <h3 className="font-semibold mb-3">{title}</h3>
@@ -27,7 +33,7 @@ export const SkillCard = ({ icon, title, level = 0 }) => {
             transition={{ duration: 1, delay: 0.2 }}
           />
         </div>
-        
+
         {/* Level Label */}
         <motion.p
           className="text-sm text-gray-600 dark:text-gray-400 mt-2"
