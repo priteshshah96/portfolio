@@ -4,11 +4,11 @@ import { SocialLinks } from '../ui/SocialLinks';
 
 export const Hero = ({ isDarkTheme }) => {
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4">
+    <section className="min-h-[90vh] flex items-center justify-center py-12 px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="flex flex-col items-center justify-center">
           {/* Profile Image with Circles */}
-          <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-8">
+          <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 mb-6">
             {/* Outer rotating circle */}
             <motion.div
               className={`absolute inset-0 rounded-full border-2 ${
@@ -66,13 +66,13 @@ export const Hero = ({ isDarkTheme }) => {
             </h1>
             <p className={`text-lg sm:text-xl ${
               isDarkTheme ? 'text-gray-300' : 'text-gray-700'
-            } max-w-2xl mx-auto mb-8 px-4`}>
+            } max-w-2xl mx-auto mb-6 px-4`}>
               Data Science Graduate from Indiana University Indianapolis with expertise in 
               Machine Learning, NLP, and Data Analysis
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 px-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8 px-4">
               <motion.a
                 href="/assets/cv/Pritesh_Shah_CV.pdf"
                 className={`bg-transparent px-8 py-3 rounded-lg font-medium border-2 ${

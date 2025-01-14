@@ -8,36 +8,49 @@ import {
   FaAws,
   FaCloud,
   FaTable,
-} from 'react-icons/fa'; // Use FontAwesome icons
-import { AiOutlineCode } from 'react-icons/ai'; // Use for generic coding
-import { BiData } from 'react-icons/bi'; // Use for data-related skills
+  FaNetworkWired,
+  FaBrain,
+  FaRobot,
+} from 'react-icons/fa';
+import { AiOutlineCode } from 'react-icons/ai';
+import { BiData, BiBrain } from 'react-icons/bi';
+import { TbBrandPython } from 'react-icons/tb';
+import { SiPytorch } from 'react-icons/si';
 
 export const Skills = () => {
   const skills = [
     // Programming Languages
-    { IconComponent: FaPython, title: 'Python', level: 90, categories: ['Programming'] },
-    { IconComponent: FaJs, title: 'JavaScript', level: 85, categories: ['Programming'] },
-    { IconComponent: AiOutlineCode, title: 'R', level: 80, categories: ['Programming'] },
+    { IconComponent: FaPython, title: 'Python', level: 'Advanced', categories: ['Programming'] },
+    { IconComponent: FaJs, title: 'JavaScript', level: 'Advanced', categories: ['Programming'] },
+    { IconComponent: AiOutlineCode, title: 'R', level: 'Intermediate', categories: ['Programming'] },
 
     // Databases
-    { IconComponent: FaDatabase, title: 'MySQL', level: 85, categories: ['Databases'] },
-    { IconComponent: FaDatabase, title: 'MongoDB', level: 80, categories: ['Databases'] },
-    { IconComponent: FaDatabase, title: 'SQLite', level: 75, categories: ['Databases'] },
+    { IconComponent: FaDatabase, title: 'MySQL', level: 'Intermediate', categories: ['Databases'] },
+    { IconComponent: FaDatabase, title: 'MongoDB', level: 'Advanced', categories: ['Databases'] },
+    { IconComponent: FaDatabase, title: 'SQLite', level: 'Advanced', categories: ['Databases'] },
+    { IconComponent: FaNetworkWired, title: 'Vector Database', level: 'Advanced', categories: ['Databases'] },
 
     // Data Science & Analysis
-    { IconComponent: BiData, title: 'Scikit-learn', level: 85, categories: ['Data Science'] },
-    { IconComponent: BiData, title: 'Pandas', level: 88, categories: ['Data Science'] },
-    { IconComponent: BiData, title: 'NumPy', level: 88, categories: ['Data Science'] },
-    { IconComponent: FaTable, title: 'Tableau', level: 80, categories: ['Data Science'] },
-    { IconComponent: FaCloud, title: 'Streamlit', level: 75, categories: ['Data Science'] },
+    { IconComponent: BiData, title: 'Scikit-learn', level: 'Advanced', categories: ['Data Science'] },
+    { IconComponent: BiData, title: 'Pandas', level: 'Advanced', categories: ['Data Science'] },
+    { IconComponent: BiData, title: 'NumPy', level: 'Advanced', categories: ['Data Science'] },
+    { IconComponent: FaTable, title: 'Tableau', level: 'Advanced', categories: ['Data Science'] },
+    { IconComponent: FaCloud, title: 'Streamlit', level: 'Advanced', categories: ['Data Science'] },
 
     // Machine Learning & AI
-    { IconComponent: AiOutlineCode, title: 'Machine Learning', level: 85, categories: ['AI/ML'] },
-    { IconComponent: AiOutlineCode, title: 'NLP (Natural Language Processing)', level: 82, categories: ['AI/ML'] },
+    { IconComponent: AiOutlineCode, title: 'Machine Learning', level: 'Advanced', categories: ['AI/ML'] },
+    { IconComponent: AiOutlineCode, title: 'NLP', level: 'Advanced', categories: ['AI/ML'] },
+    { IconComponent: SiPytorch, title: 'PyTorch', level: 'Advanced', categories: ['AI/ML'] },
+
+    // AI Agents & Frameworks
+    { IconComponent: FaRobot, title: 'CrewAI', level: 'Intermediate', categories: ['AI Frameworks'] },
+    { IconComponent: BiBrain, title: 'LangChain', level: 'Intermediate', categories: ['AI Frameworks'] },
+    { IconComponent: FaBrain, title: 'LangGraph', level: 'Intermediate', categories: ['AI Frameworks'] },
+    { IconComponent: FaNetworkWired, title: 'LlamaIndex', level: 'Intermediate', categories: ['AI Frameworks'] },
 
     // Cloud & Deployment
-    { IconComponent: FaAws, title: 'AWS (SageMaker, ECS, Lambda, S3)', level: 75, categories: ['Cloud & Deployment'] },
-    { IconComponent: FaCloud, title: 'MLflow & Hydra', level: 70, categories: ['Cloud & Deployment'] },
+    { IconComponent: FaAws, title: 'AWS', level: 'Intermediate', categories: ['Cloud & Deployment'] },
+    { IconComponent: FaCloud, title: 'MLflow & Hydra', level: 'Intermediate', categories: ['Cloud & Deployment'] },
   ];
 
   const categories = ['All', ...new Set(skills.flatMap(skill => skill.categories))];
@@ -60,7 +73,6 @@ export const Skills = () => {
         >
           <h2 className="text-3xl font-bold mb-8">Skills & Expertise</h2>
 
-          {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map(category => (
               <motion.button
@@ -80,7 +92,6 @@ export const Skills = () => {
           </div>
         </motion.div>
 
-        {/* Skill Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
           {filteredSkills.map((skill, index) => (
             <motion.div

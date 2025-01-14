@@ -23,7 +23,7 @@ export default {
         }
       },
       animation: {
-        'bounce-slow': 'bounce 3s linear infinite',
+        'bounce-slow': 'bounce 2s linear infinite',
       },
     },
   },

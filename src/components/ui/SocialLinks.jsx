@@ -16,12 +16,6 @@ export const SocialLinks = () => {
       color: 'hover:text-[#333]'
     },
     {
-      name: 'Kaggle',
-      icon: 'kaggle',
-      url: 'https://kaggle.com/priteshshah96',  // Update with your Kaggle URL
-      color: 'hover:text-[#20BEFF]'
-    },
-    {
       name: 'Email',
       icon: 'envelope',
       url: 'mailto:priteshshahwork@gmail.com',
